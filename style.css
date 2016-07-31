@@ -1,0 +1,29 @@
+/* FOOTER CSS*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  color :black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+/* END FOOTER CSS*/
+body{
+  background-color: rgb(75, 87, 84);
+  color:rgb(232, 232, 232);
+}
+.btn-simon{
+  min-height: 20vh;
+}
+.top{
+  min-height: 10vh;
+}

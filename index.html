@@ -6,9 +6,41 @@
 
 
   <link rel="stylesheet" href="lib/bootstrap.min.css">
-
+  <link rel="stylesheet" href="lib/titatoggle.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hey Merge oare ?</h1>
+  <div class="container-fluid">
+    <div class="row top">
+      <div class="col-sm-4">
+        <h3><b>COUNT : <u>00</u></b></h3>
+        <a href="">START/RESET</a>
+        <div class="checkbox checkbox-slider--default checkbox-slider-danger ">
+	        <label>
+        		<input type="checkbox"><span class="indicator-danger">STRICT</span>
+	        </label>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <h1 class="text-center"><b>SIMON</b></h1>
+      </div>
+
+    </div>
+    <div class="row">
+      <button class="btn btn-block btn-danger btn-simon"></button>
+    </div>
+    <div class="row">
+      <button class="btn btn-block btn-success btn-simon"></button>
+    </div>
+    <div class="row">
+      <button class="btn btn-block btn-info btn-simon"></button>
+    </div>
+    <div class="row">
+      <button class="btn btn-block btn-warning btn-simon"></button>
+    </div>
+  </div>
 </body>
+<footer class="footer">
+  <h4 class="text-center"> By Cubb | <a href="https://github.com/cubbic/SimonGame">View Code</a></h4>
+</footer>
