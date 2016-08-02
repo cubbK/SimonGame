@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
     var proggression = [];
     //proggression.push(randomIntFromInterval(1,4));
-
+    var speed = 1000;
     var count = 0;
     var strict;
     $('#start').click(function () {
@@ -25,16 +25,17 @@ $( document ).ready(function() {
       proggression.push(randomIntFromInterval(1,4));
       deselectAll();
 
-      interval = setInterval(showMove, 1000);
+      interval = setInterval(showMove, speed);
 
     }
     function startAgain() {
       apasariCorecte = 0;
       proggression = [];
+      speed = 1000;
 
       proggression.push(randomIntFromInterval(1,4));
       deselectAll();
-      interval = setInterval(showMove, 1000);
+      interval = setInterval(showMove, speed);
     }
     function showMove() {
       if (count ==proggression.length){
@@ -76,7 +77,15 @@ $( document ).ready(function() {
             //daca a apasat toate butoanele corecte
             $('#count').text(proggression.length +1);
             apasariCorecte = 0;
+            if ([5,9,13].indexOf(proggression.length) > -1){
+              speed /=2;
+            }
+            if (proggression.length == 20){
+              alert('You Are The Best! You Win');
+              startAgain();
+            }
             start();
+
           }
         }else {
           //daca a gresit butonul
@@ -99,7 +108,7 @@ $( document ).ready(function() {
     function showAgain() {
       apasariCorecte = 0;
       deselectAll();
-      interval = setInterval(showMove, 1000);
+      interval = setInterval(showMove, speed);
 
       //resetam tot
     }
