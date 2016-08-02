@@ -10,14 +10,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row top">
       <div class="col-sm-4">
-        <h3><b>COUNT : <u>00</u></b></h3>
-        <a href="">START/RESET</a>
+        <h3><b>COUNT : <u id="count">1</u></b></h3>
+        <a   href="#" id="start">START/RESET</a>
         <div class="checkbox checkbox-slider--default checkbox-slider-danger ">
 	        <label>
-        		<input type="checkbox"><span class="indicator-danger">STRICT</span>
+        		<input type="checkbox" id="strict"><span class="indicator-danger">STRICT</span>
 	        </label>
         </div>
       </div>
@@ -28,16 +28,16 @@
 
     </div>
     <div class="row">
-      <button class="btn btn-block btn-danger btn-simon"></button>
+      <button class="btn btn-block btn-danger btn-simon " id="1" ></button>
     </div>
     <div class="row">
-      <button class="btn btn-block btn-success btn-simon"></button>
+      <button class="btn btn-block btn-success btn-simon " id="2" ></button>
     </div>
     <div class="row">
-      <button class="btn btn-block btn-info btn-simon"></button>
+      <button class="btn btn-block btn-info btn-simon " id="3"></button>
     </div>
     <div class="row">
-      <button class="btn btn-block btn-warning btn-simon"></button>
+      <button class="btn btn-block btn-warning btn-simon" id="4"></button>
     </div>
   </div>
 </body>
