@@ -2,26 +2,38 @@ var sound1 = new Audio('sound/simonSound1.mp3');
 var sound2 = new Audio('sound/simonSound2.mp3');
 var sound3 = new Audio('sound/simonSound3.mp3');
 var sound4 = new Audio('sound/simonSound4.mp3');
+var soundWrong = new Audio('sound/wrong.mp3');
+soundWrong.volume = 0.2;
 var sounds = [sound1,sound2,sound3,sound4];
 $( document ).ready(function() {
 
 
     var proggression = [];
     //proggression.push(randomIntFromInterval(1,4));
-    proggression.push(1);
-    proggression.push(2);
-    proggression.push(3);
-    proggression.push(4);
-    var count = 0;
 
+    var count = 0;
+    var strict;
     $('#start').click(function () {
-      start();
-      deactivateAll();
+      startAgain();
+      deactivateAll(true);
+      strict =$('#strict').is(":checked");
+
     });
 
     function start() {
-      var strict =$('#strict').is(":checked");
-      showMove();
+
+      proggression.push(randomIntFromInterval(1,4));
+      deselectAll();
+
+      interval = setInterval(showMove, 1000);
+
+    }
+    function startAgain() {
+      apasariCorecte = 0;
+      proggression = [];
+
+      proggression.push(randomIntFromInterval(1,4));
+      deselectAll();
       interval = setInterval(showMove, 1000);
     }
     function showMove() {
@@ -29,11 +41,11 @@ $( document ).ready(function() {
         clearInterval(interval);
         deselectAll();
         count =0;
+        deactivateAll(false);
         return;
       }
       deselectAll();
       $('#'+proggression[count]).addClass('active');
-      console.log(proggression[count] -1);
       sounds[proggression[count] -1].play();
       count++;
 
@@ -44,10 +56,52 @@ $( document ).ready(function() {
         $('#'+i).removeClass('active');
       }
     }
-    function deactivateAll(){
+    function deactivateAll(bool){
       for (var i = 1 ; i <= 4;i++ ){
-        $('#'+i).prop('disabled' , true);
+        $('#'+i).prop('disabled' , bool);
       }
+    }
+
+    var apasariCorecte = 0;
+    $('.btn-simon').click(function () {
+      strict =$('#strict').is(":checked");
+      var id = this.id;
+      if (proggression.length != 0 ){
+        //daca playerul a apasat pe play
+        if (id == proggression[apasariCorecte]){
+          //daca a apasat corect butonul
+          sounds[id-1].play();
+          apasariCorecte++;
+          if (apasariCorecte !=0 && apasariCorecte == proggression.length  ){
+            //daca a apasat toate butoanele corecte
+            $('#count').text(proggression.length +1);
+            apasariCorecte = 0;
+            start();
+          }
+        }else {
+          //daca a gresit butonul
+          if (strict){
+            $('#count').text(1);
+            soundWrong.play();
+            startAgain();
+
+          }else {
+            soundWrong.play();
+            showAgain();
+          }
+
+        }
+      }
+
+    });
+
+
+    function showAgain() {
+      apasariCorecte = 0;
+      deselectAll();
+      interval = setInterval(showMove, 1000);
+
+      //resetam tot
     }
 });
 
